@@ -1,11 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/matsuken/fout/fout_infra/puppet/modules/crontab/templates/log_active'
-let g:netrw_dirhist_2='/Users/matsuken/fout/fout_audience/extlib/lib/perl5'
-let g:netrw_dirhist_3='/Users/matsuken/fout/fout_infra/puppet/modules/openresty/manifests'
-let g:netrw_dirhist_4='/Users/matsuken/fout/fout_infra/puppet/modules/openresty/templates'
-let g:netrw_dirhist_5='/Users/matsuken/fout/fout_infra/puppet/modules/nginx/templates/internal'
-let g:netrw_dirhist_6='/Users/matsuken/fout/fout_infra/cobbler'
-let g:netrw_dirhist_7='/Users/matsuken/fout/fout_infra'
-let g:netrw_dirhist_8='/Users/matsuken/fout'
-let g:netrw_dirhist_9='/Users/matsuken/tmp/nopaste/vendor'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/matsuken/eureka/arch/ansible/roles/mysql5-7'
+let g:netrw_dirhist_2='/Users/matsuken/eureka/provisioning-tools/roles'
+let g:netrw_dirhist_3='/Users/matsuken/eureka/arch/ansible/roles/mysql5-7/templates'

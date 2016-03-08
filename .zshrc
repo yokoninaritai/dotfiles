@@ -96,11 +96,17 @@ eval "$(rbenv init -)"
 #=============================
 # source perl
 #=============================
-#source ~/perl5/perlbrew/etc/bashrc
+source ~/perl5/perlbrew/etc/bashrc
+
+#=============================
+# source golang
+#=============================
+source ~/.gvm/scripts/gvm
 
 #=============================
 # source python
 #=============================
+export PATH=/usr/local/share/python:$PATH
 #source ~/.pythonbrew/etc/bashrc
 #VIRTUALENVWRAPPER_PYTHON=$HOME/.pythonbrew/pythons/Python-3.2.1/bin/python
 #source $HOME/.pythonbrew/pythons/Python-3.2.1/bin/virtualenvwrapper.sh
@@ -265,6 +271,27 @@ bindkey '^x^p' pbcopy-buffer
 unset LD_LIBRARY_PATH
 unset DYLD_LIBRARY_PATH
 
+
+export PATH=$PATH:${HOME}/terraform/
 # set alias
 alias fo="ssh matsuken@fout_gw"
 alias fol="ssh nn@xp3"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/matsuken/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/matsuken/google-cloud-sdk/completion.zsh.inc'
+
+# docker
+export DOCKER_CERT_PATH=/Users/matsuken/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+
+GO_VERSION=1.5
+export GOPATH=~/.go/${GO_VERSION}
+export PATH=$GOPATH/bin:$PATH
+
+## cdr
+autoload -Uz add-zsh-hock
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
