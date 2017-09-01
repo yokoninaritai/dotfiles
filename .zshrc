@@ -99,9 +99,14 @@ eval "$(rbenv init -)"
 source ~/perl5/perlbrew/etc/bashrc
 
 #=============================
+# source perl
+#=============================
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+#=============================
 # source golang
 #=============================
-source ~/.gvm/scripts/gvm
+#source ~/.gvm/scripts/gvm
 
 #=============================
 # source python
@@ -273,9 +278,6 @@ unset DYLD_LIBRARY_PATH
 
 
 export PATH=$PATH:${HOME}/terraform/
-# set alias
-alias fo="ssh matsuken@fout_gw"
-alias fol="ssh nn@xp3"
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/Users/matsuken/google-cloud-sdk/path.zsh.inc'
@@ -284,14 +286,45 @@ source '/Users/matsuken/google-cloud-sdk/path.zsh.inc'
 source '/Users/matsuken/google-cloud-sdk/completion.zsh.inc'
 
 # docker
-export DOCKER_CERT_PATH=/Users/matsuken/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
+#export DOCKER_CERT_PATH=/Users/matsuken/.boot2docker/certs/boot2docker-vm
+#export DOCKER_TLS_VERIFY=1
+#export DOCKER_HOST=tcp://192.168.59.103:2376
 
-GO_VERSION=1.5
-export GOPATH=~/.go/${GO_VERSION}
-export PATH=$GOPATH/bin:$PATH
+# golang
+if [ -d "$HOME/.goenv" ]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  export GOPATH="$HOME/go"
+  export PATH="$GOPATH/bin:$PATH"
+  which goenv > /dev/null && eval "$(goenv init -)"
+fi
+
+eval "$(direnv hook zsh)"
 
 ## cdr
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+
+## antigen
+if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
+  source $HOME/.zsh/antigen/antigen.zsh
+  antigen bundle mollifier/anyframe # 追加
+  antigen apply
+fi
+
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
