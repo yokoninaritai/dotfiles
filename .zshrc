@@ -224,7 +224,7 @@ if [ -d "$HOME/.goenv" ]; then
   which goenv > /dev/null && eval "$(goenv init -)"
 fi
 
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 ## cdr
 autoload -Uz add-zsh-hock
