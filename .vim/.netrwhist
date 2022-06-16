@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/matsuken/eureka/arch/packer/ansible-roles/netrc/tasks'
-let g:netrw_dirhist_2='/Users/matsuken/eureka/arch/packer/microservices/payment/app/provisioners/variables'
-let g:netrw_dirhist_3='/Users/matsuken/eureka/arch/packer/ansible-roles/consul-template/files/eure-payment'
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/matsuken/lighthouse/isana-infra/.github/workflows'
+let g:netrw_dirhist_1='/Users/matsuken/hashport/terraform/services/signer/stag'
+let g:netrw_dirhist_0='/Users/matsuken/hashport/terraform/services/marketplace/modules/ecs'
+let g:netrw_dirhist_9='/Users/matsuken/sharefull-github'
+let g:netrw_dirhist_8='/Users/matsuken/hashport/terraform/services/marketplace'
+let g:netrw_dirhist_7='/Users/matsuken/lighthouse/isana-collect-satellite-api/.github/workflows'
+let g:netrw_dirhist_6='/Users/matsuken/lighthouse/isana-collect-satellite-api/.github/terraform'
+let g:netrw_dirhist_5='/Users/matsuken/lighthouse/isana-detection-satellite-api/.github/workflows'
+let g:netrw_dirhist_4='/Users/matsuken/sharefull-github/sharefull-backend/.circleci'
+let g:netrw_dirhist_3='/Users/matsuken/hashport/hashsuite-sdk/.circleci/deployments'

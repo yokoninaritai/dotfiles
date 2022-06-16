@@ -71,16 +71,16 @@ match ZenkakuSpace /　/
 if &term =~ "xterm-256color" || "screen-256color"
   " 256色
   set t_Co=256
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
 elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
   set t_Co=16
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
 elseif &term =~ "xterm-color"
   set t_Co=8
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+  set t_Sf=[3%dm
+  set t_Sb=[4%dm
 endif
 
 " カレント行ハイライトON
@@ -323,3 +323,22 @@ set rtp+=$GOROOT/misc/vim
 exe "set rtp+=" . globpath($GOPATH, "/usr/local/opt/go/misc/vim")
 auto BufWritePre *.go Fmt
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+call plug#end()
+
+set hidden
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+
+nmap <F12> <Plug>(lsp-definition)
+nmap ,n <plug>(lsp-next-error)
+nmap ,p <plug>(lsp-previous-error)
+nmap <F2> <plug>(lsp-rename)

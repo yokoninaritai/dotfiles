@@ -16,22 +16,22 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 #=============================$
 # source ruby
 #=============================$
-#if [ -d ~/.rbenv ]; then
-#    export PATH=$PATH:$HOME/.rbenv/bin
-#    eval "$(rbenv init -)"
-#fi
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+if [ -d ~/.rbenv ]; then
+    export PATH=$PATH:$HOME/.rbenv/bin
+    eval "$(rbenv init -)"
+fi
 
 #=============================
 # source perl
 #=============================
-#source ~/perl5/perlbrew/etc/bashrc
+export PATH=$HOME/.plenv/bin:$PATH
+eval "$(plenv init -)"
 
 #=============================
-# source perl
+# source node
 #=============================
-#export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodenv/bin:$PATH
+eval "$(nodenv init -)"
 
 #=============================
 # source golang
@@ -41,10 +41,8 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 #=============================
 # source python
 #=============================
-#export PATH=/usr/local/share/python:$PATH
-#source ~/.pythonbrew/etc/bashrc
-#VIRTUALENVWRAPPER_PYTHON=$HOME/.pythonbrew/pythons/Python-3.2.1/bin/python
-#source $HOME/.pythonbrew/pythons/Python-3.2.1/bin/virtualenvwrapper.sh
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 #=============================
 # Alias
@@ -226,6 +224,10 @@ fi
 
 #eval "$(direnv hook zsh)"
 
+#if [ -d "$HOME/.cargo" ]; then
+#  export PATH="$HOME/.cargo/bin:$PATH"
+#fi
+
 ## cdr
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
@@ -253,3 +255,21 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+#export GOOGLE_APPLICATION_CREDENTIALS=~/sharefull-github/sharefull-devops/terraform/sharefull/backend_key.json
+#export GOOGLE_APPLICATION_CREDENTIALS=~/sharefull-login-prod-firebase.json
+
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
+export PATH=/usr/local/opt/openssl/bin:$PATH
+
+export PATH="/usr/local/bin:$PATH"
+#export PATH="/usr/local/opt/gettext/bin:$PATH"
+#export LDFLAGS="-L/usr/local/opt/gettext/lib"
+#export CPPFLAGS="-I/usr/local/opt/gettext/include"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/matsuken/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/matsuken/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/completion.zsh.inc'; fi
