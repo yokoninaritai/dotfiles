@@ -41,8 +41,8 @@ eval "$(nodenv init -)"
 #=============================
 # source python
 #=============================
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#export PYENV_ROOT=/usr/local/var/pyenv
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 #=============================
 # Alias
@@ -254,6 +254,11 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
 #export GOOGLE_APPLICATION_CREDENTIALS=~/sharefull-github/sharefull-devops/terraform/sharefull/backend_key.json
 #export GOOGLE_APPLICATION_CREDENTIALS=~/sharefull-login-prod-firebase.json
