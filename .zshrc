@@ -1,10 +1,7 @@
-export ZSH=$HOME/.oh-my-zsh
-#ZSH_THEME="frisk"
-#ZSH_THEME="simple"
+# 環境変数
+export LANG=en_US.UTF-8
 ZSH_THEME="gentoo"
 plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 unsetopt correct_all
@@ -12,37 +9,36 @@ unsetopt correct_all
 # PATH
 #=============================
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-#=============================$
-# source ruby
-#=============================$
-if [ -d ~/.rbenv ]; then
-    export PATH=$PATH:$HOME/.rbenv/bin
-    eval "$(rbenv init -)"
+# zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  #source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  autoload -Uz compinit && compinit
 fi
 
-#=============================
-# source perl
-#=============================
-export PATH=$HOME/.plenv/bin:$PATH
-eval "$(plenv init -)"
+autoload colors
+colors
 
-#=============================
-# source node
-#=============================
-export PATH=$HOME/.nodenv/bin:$PATH
-eval "$(nodenv init -)"
+# git-promptの読み込み
+source ~/.zsh/git-prompt.sh
 
-#=============================
-# source golang
-#=============================
-#source ~/.gvm/scripts/gvm
+# git-completionの読み込み
+fpath=(~/.zsh $fpath)
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+autoload -Uz compinit && compinit
 
-#=============================
-# source python
-#=============================
-#export PYENV_ROOT=/usr/local/var/pyenv
-#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# プロンプトのオプション表示設定
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM=auto
+
+# プロンプトの表示設定(好きなようにカスタマイズ可)
+setopt PROMPT_SUBST ; PS1='%F{green}%n@%m%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
+\$ '
 
 #=============================
 # Alias
@@ -184,10 +180,10 @@ case "${TERM}" in
 esac
 
 #autojump
-alias j="autojump"
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
+#alias j="autojump"
+#if [ -f `brew --prefix`/etc/autojump ]; then
+#  . `brew --prefix`/etc/autojump
+#fi
 
 #表示されているコマンドラインを
 #Ctrl-x Ctrl-pでクリップボードにコピー
@@ -202,32 +198,6 @@ bindkey '^x^p' pbcopy-buffer
 unset LD_LIBRARY_PATH
 unset DYLD_LIBRARY_PATH
 
-# The next line updates PATH for the Google Cloud SDK.
-#source '/Users/matsuken/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-#source '/Users/matsuken/google-cloud-sdk/completion.zsh.inc'
-
-# docker
-#export DOCKER_CERT_PATH=/Users/matsuken/.boot2docker/certs/boot2docker-vm
-#export DOCKER_TLS_VERIFY=1
-#export DOCKER_HOST=tcp://192.168.59.103:2376
-
-# golang
-if [ -d "$HOME/.goenv" ]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
-  export GOPATH="$HOME/go"
-  export PATH="$GOPATH/bin:$PATH"
-  which goenv > /dev/null && eval "$(goenv init -)"
-fi
-
-#eval "$(direnv hook zsh)"
-
-#if [ -d "$HOME/.cargo" ]; then
-#  export PATH="$HOME/.cargo/bin:$PATH"
-#fi
-
 ## cdr
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
@@ -239,6 +209,9 @@ if [[ -f $HOME/.zsh/antigen/antigen.zsh ]]; then
   antigen apply
 fi
 
+#=============================
+# peco
+#=============================
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
@@ -255,23 +228,19 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+### golang
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+### ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
 
-#export GOOGLE_APPLICATION_CREDENTIALS=~/sharefull-github/sharefull-devops/terraform/sharefull/backend_key.json
-#export GOOGLE_APPLICATION_CREDENTIALS=~/sharefull-login-prod-firebase.json
-
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
-export PATH=/usr/local/opt/openssl/bin:$PATH
-
-export PATH="/usr/local/bin:$PATH"
-#export PATH="/usr/local/opt/gettext/bin:$PATH"
-#export LDFLAGS="-L/usr/local/opt/gettext/lib"
-#export CPPFLAGS="-I/usr/local/opt/gettext/include"
+### postgresql
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/matsuken/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/path.zsh.inc'; fi
