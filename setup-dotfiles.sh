@@ -19,9 +19,9 @@ if [ -d $HOME/.zsh ]; then
     unlink $HOME/.zsh
 fi
 
-if [ -d $HOME/.tmux ]; then
-    unlink $HOME/.tmux
-fi
+#if [ -d $HOME/.tmux ]; then
+#    unlink $HOME/.tmux
+#fi
 
 if [ -d $HOME/.gittmp ]; then
     unlink $HOME/.gittmp
