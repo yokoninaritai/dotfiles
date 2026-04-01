@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DOTFILES=".zsh zprofile .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .vimrc .vimrc.bundle .tmux.conf"
+export DOTFILES=".zsh .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .vimrc .vimrc.bundle"
 
 for dotfile in $DOTFILES
 do  
