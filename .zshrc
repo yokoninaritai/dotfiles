@@ -229,13 +229,13 @@ zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 ### golang
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
+#export GOENV_ROOT="$HOME/.goenv"
+#export PATH="$GOENV_ROOT/bin:$PATH"
+#eval "$(goenv init -)"
 
 ### ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init - zsh)"
 
 ### postgresql
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
