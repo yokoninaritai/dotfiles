@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/kenji.647/.zsh'
 let g:netrw_dirhist_5='/Users/pc-t000025/mosh/mosh-infra/.github/workflows'
 let g:netrw_dirhist_4='/Users/pc-t000025/mosh/mosh-infra/.github'
 let g:netrw_dirhist_3='/Users/pc-t000025/mediaaid/emyuna-api/api/infrastructure/database/treatmentpost'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_0='/Users/pc-t000025/mediaaid/emyuna-api/api/infrastructure/
 let g:netrw_dirhist_9='/Users/pc-t000025/mediaaid/emyuna-api/api/setting/air/api'
 let g:netrw_dirhist_8='/Users/pc-t000025/srac-technologies/fanka-terraform/modules/secretsmanager'
 let g:netrw_dirhist_7='/Users/pc-t000025/srac-technologies/fanka-terraform/modules/cloudwatch'
-let g:netrw_dirhist_6='/Users/pc-t000025/genomedia/trialnavi/trialnavi-infra/modules/trialnavi'

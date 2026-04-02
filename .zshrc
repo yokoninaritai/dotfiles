@@ -179,11 +179,8 @@ case "${TERM}" in
         ;;
 esac
 
-#autojump
-#alias j="autojump"
-#if [ -f `brew --prefix`/etc/autojump ]; then
-#  . `brew --prefix`/etc/autojump
-#fi
+# autojump
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 #表示されているコマンドラインを
 #Ctrl-x Ctrl-pでクリップボードにコピー
@@ -238,12 +235,12 @@ bindkey '^r' peco-select-history
 #eval "$(rbenv init - zsh)"
 
 ### postgresql
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
+#export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+#export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/matsuken/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/path.zsh.inc'; fi
+#if [ -f '/Users/matsuken/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/matsuken/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/completion.zsh.inc'; fi
+#if [ -f '/Users/matsuken/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/matsuken/google-cloud-sdk/completion.zsh.inc'; fi
