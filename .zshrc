@@ -225,6 +225,13 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+### python
+#export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 ### golang
 #export GOENV_ROOT="$HOME/.goenv"
 #export PATH="$GOENV_ROOT/bin:$PATH"
